@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "InfinityOfficialNetwork.Languages.IXX": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

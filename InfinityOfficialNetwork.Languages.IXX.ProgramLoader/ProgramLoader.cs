@@ -4,6 +4,19 @@ using System.Runtime.InteropServices;
 public static class ProgramLoader
 {
 	private delegate int MainDelegate();
+
+	// 1. Define the delegate with Cdecl calling convention
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+	public delegate void WriteConsoleDelegate(byte value);
+
+	// 2. Keep a static reference so the GC doesn't collect the function pointer
+	private static readonly WriteConsoleDelegate WriteConsoleInstance = write_console;
+
+	public static void write_console(byte value)
+	{
+		Console.Write((char)value);
+	}
+
 	public static unsafe int RunLLVMProgram(byte[] programBytes)
 	{
 		// 1. Initialize ALL native components
@@ -109,6 +122,25 @@ public static class ProgramLoader
 		{
 			throw new InvalidOperationException(Marshal.PtrToStringAnsi((IntPtr)errorMsg));
 		}
+
+		// ============================================================
+		// LINKING EXTERNAL FUNCTIONS
+		// ============================================================
+
+		// A. Find the function declaration in the IR
+		nint write_name = Marshal.StringToHGlobalAnsi("write_console");
+		LLVMValueRef writeFunc = LLVM.GetNamedFunction(module, (sbyte*)write_name);
+
+		if (writeFunc.Handle != IntPtr.Zero)
+		{
+			// B. Get the actual memory address of our C# method
+			IntPtr writePtr = Marshal.GetFunctionPointerForDelegate(WriteConsoleInstance);
+
+			// C. Map the IR value to the C# memory address
+			// We cast engine to LLVMExecutionEngineRef as required by the wrapper
+			LLVM.AddGlobalMapping(engine, writeFunc, (void*)writePtr);
+		}
+		Marshal.FreeHGlobal(write_name);
 
 		// 7. Execute
 		LLVMValueRef function = LLVM.GetNamedFunction(module, (sbyte*)Marshal.StringToHGlobalAnsi("main"));
