@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinityOfficialNetwork.Languages.IXX", "InfinityOfficialNetwork.Languages.IXX\InfinityOfficialNetwork.Languages.IXX.csproj", "{F9D2413E-81A0-4B91-AE27-FC879C9C53D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinityOfficialNetwork.Languages.IXX.ProgramLoader", "InfinityOfficialNetwork.Languages.IXX.ProgramLoader\InfinityOfficialNetwork.Languages.IXX.ProgramLoader.csproj", "{4998F1FD-DD85-4EDD-827C-7133E6C01BFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9D2413E-81A0-4B91-AE27-FC879C9C53D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D2413E-81A0-4B91-AE27-FC879C9C53D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D2413E-81A0-4B91-AE27-FC879C9C53D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D2413E-81A0-4B91-AE27-FC879C9C53D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4998F1FD-DD85-4EDD-827C-7133E6C01BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4998F1FD-DD85-4EDD-827C-7133E6C01BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4998F1FD-DD85-4EDD-827C-7133E6C01BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4998F1FD-DD85-4EDD-827C-7133E6C01BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {319DB3AB-0B86-49EB-99BC-46E38691AD99}
+	EndGlobalSection
+EndGlobal
